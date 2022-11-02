@@ -47,18 +47,18 @@ public class UploadController {
 		
 		System.out.println("============processing done!");
         
-		String requestUri = servletRequest.getRequestURI();
-        UploadInfo uploadInfo = tusFileUploadService.getUploadInfo(requestUri);
-        if(uploadInfo != null && !uploadInfo.isUploadInProgress()) {
-        	try(InputStream inputStream = tusFileUploadService.getUploadedBytes(requestUri)) {
-        		Path path = Paths.get(uploadDir).resolve(uploadInfo.getFileName());
-            	Files.copy(inputStream, path, StandardCopyOption.REPLACE_EXISTING);
-            	tusFileUploadService.deleteUpload(requestUri);
-        	}
-        	catch(IOException ioe) {
-    			throw ioe;
-    		}
-        }
+//		String requestUri = servletRequest.getRequestURI();
+//        UploadInfo uploadInfo = tusFileUploadService.getUploadInfo(requestUri);
+//        if(uploadInfo != null && !uploadInfo.isUploadInProgress()) {
+//        	try(InputStream inputStream = tusFileUploadService.getUploadedBytes(requestUri)) {
+//        		Path path = Paths.get(uploadDir).resolve(uploadInfo.getFileName());
+//            	Files.copy(inputStream, path, StandardCopyOption.REPLACE_EXISTING);
+//            	tusFileUploadService.deleteUpload(requestUri);
+//        	}
+//        	catch(IOException ioe) {
+//    			throw ioe;
+//    		}
+//        }
 		
         return "saved file!";
     }
